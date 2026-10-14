@@ -1,5 +1,5 @@
 import java.util.Random;
-public class HangmanWords {
+public class Words {
     private static final String[] words = {
             "АЛГЕБРА",
             "АНТЕННА",

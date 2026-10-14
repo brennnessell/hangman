@@ -1,27 +1,27 @@
-import java.util.Arrays;
 import java.util.Scanner;
+import java.util.InputMismatchException;
 public class Hangman {
-    private static int attemptsLimit = 7;
+    public static void main(String args[]){
+        int workMode = 1;
+        Scanner scanner = new Scanner(System.in);
 
-    private String getGuessedCharsInStr(char[] guessedChars) {
-        String guessedCharsInStr = new String(guessedChars);
-        return guessedCharsInStr;
-    }
+        while (workMode != 0) {
+            System.out.println("Выберите режим работы: [1] - Игра, [0] - Выход");
+            System.out.print("Ваш выбор: ");
+            try {
+                workMode = scanner.nextInt();
 
-    public void playHangman(){
-        char[] wordToGuess = HangmanWords.getRandomWord().toCharArray();
-        char[] guessedChars = new char[wordToGuess.length];
-        Scanner in = new Scanner(System.in);
-        int attemptsLeft = attemptsLimit;
-
-        Arrays.fill(guessedChars, '_');
-
-        //System.out.println(getGuessedCharsInStr(guessedChars));
-        //System.out.println(Arrays.toString(wordToGuess));
-
-        while (attemptsLeft != 0) {
-            System.out.print("Выберите букву алфавита: ");
-            in.next().toString();
-        }
+                if (workMode != 0 && workMode != 1) {
+                    System.out.println("Упс, такого режима работы нет... Попробуйте еще раз.");
+                } else {
+                    Game game = new Game();
+                    game.playGame();
+                }
+            }
+            catch (InputMismatchException e) {
+                System.out.println("Введено некорректное значение для выбора режима работы! Попробуйте еще раз.");
+                scanner.next();
+            }
+        } ;
     }
 }
