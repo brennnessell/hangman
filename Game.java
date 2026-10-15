@@ -1,32 +1,39 @@
 import java.util.Arrays;
-import java.util.Scanner;
 public class Game {
-    private int attemptsLimit;
-    private char[] wordToGuess;
+    private int attemptsLeft;
+    private final String wordToGuess;
 
     Game() {
-        attemptsLimit = 7;
-        wordToGuess = Words.getRandomWord().toCharArray();
+        attemptsLeft = 7;
+        wordToGuess = Words.getRandomWord();
     }
 
-    private String getGuessedCharsInStr(char[] guessedChars) {
-        String guessedCharsInStr = new String(guessedChars);
-        return guessedCharsInStr;
+    private static void openGuessedLetters(String originWord, String letter, String[] demaskingWord) {
+        for (int i = 1; i < originWord.length(); i++) {
+            if (String.valueOf(originWord.charAt(i)).equals(letter)) {
+                demaskingWord[i] = letter;
+            }
+        }
     }
 
-    public void playGame(){
-        char[] guessedChars = new char[this.wordToGuess.length];
-        Scanner scanner = new Scanner(System.in);
-        int attemptsLeft = this.attemptsLimit;
-
-        Arrays.fill(guessedChars, '_');
-
-        //System.out.println(getGuessedCharsInStr(guessedChars));
-        //System.out.println(Arrays.toString(wordToGuess));
+    public boolean playGame(){
+        String[] maskedWord = new String[wordToGuess.length()];
+        Arrays.fill(maskedWord, "_");
+        UserInterface userInterface = new UserInterface();
 
         while (attemptsLeft != 0) {
-            System.out.print("Выберите букву алфавита: ");
-            scanner.next().toString();
+            String currentLetter = userInterface.getUserLetter().toUpperCase();
+
+            if (!wordToGuess.contains(currentLetter)) {
+                openGuessedLetters(wordToGuess, currentLetter, maskedWord);
+                if (String.join("", maskedWord).equals(wordToGuess)) {
+                    return true;
+                }
+            } else {
+                attemptsLeft -= 1;
+            }
         }
+
+        return false;
     }
 }
