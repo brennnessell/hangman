@@ -7,7 +7,7 @@ public class UserInterface {
     }
 
     private void crossOutTheLetter(String letter) {
-        keyboard.replace(letter, "");
+        keyboard = keyboard.replace(letter, "");
     }
 
     private boolean checkIfLetterIsAvailable(String letter) {
@@ -21,9 +21,10 @@ public class UserInterface {
 
         boolean letterIsGot = false;
 
+        System.out.println("Доступные буквы: " + keyboard);
         while (!letterIsGot) {
             System.out.print("Выберите букву: ");
-            letter = scanner.next();
+            letter = scanner.next().toUpperCase();
             if (!this.checkIfLetterIsAvailable(letter)) {
                 System.out.println("Упс, такая буква уже была использована, либо введенный символ не является буквой. Попробуйте еще раз!");
                 continue;
@@ -32,7 +33,7 @@ public class UserInterface {
             }
         }
 
-        this.crossOutTheLetter(letter);
+        crossOutTheLetter(letter);
         return letter;
     }
 }
