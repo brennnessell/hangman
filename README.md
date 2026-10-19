@@ -11,8 +11,12 @@ To start the app, run file "Main.java".
 Since it is a simple study project, there is no validation of content in "bankOfWords.txt" file.
 It is supposed, that words in this file are only in russian and arranged as following:
 ЯБЛОКО
+
 АПЕЛЬСИН
+
 БАНАН
+
 ect.
+
 
 Please, consider these while using my console app "Hangman".
