@@ -10,6 +10,7 @@ To start the app, run file "Main.java".
 !Pay attention!
 Since it is a simple study project, there is no validation of content in "bankOfWords.txt" file.
 It is supposed, that words in this file are only in russian and arranged as following:
+
 ЯБЛОКО
 
 АПЕЛЬСИН
