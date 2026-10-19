@@ -1,8 +1,9 @@
 import java.util.Scanner;
-public class Hangman {
+public class Main {
     public static void main(String args[]){
         Scanner scanner = new Scanner(System.in);
         UserInterface userInterface = new UserInterface(scanner);
+
         int workMode = 1;
 
         userInterface.resetKeyboard();
