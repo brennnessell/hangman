@@ -1,5 +1,7 @@
 import java.util.Scanner;
 public class Main {
+    private static final int START = 1;
+    private static final int QUIT = 0;
     public static void main(String args[]){
         Scanner scanner = new Scanner(System.in);
         UserInterface userInterface = new UserInterface(scanner);
@@ -7,18 +9,20 @@ public class Main {
         int workMode = 1;
 
         userInterface.resetKeyboard();
-        while (workMode != 0) {
-            System.out.println("Выберите режим работы: [1] - Игра, [0] - Выход");
+        while (true) {
+            System.out.printf("Выберите режим работы: [%d] - Игра, [%d] - Выход", START, QUIT);
             System.out.print("Ваш выбор: ");
 
             workMode = userInterface.getWorkMode();
 
-            if (workMode == 1) {
+            if (workMode == START) {
                 Game game = new Game();
                 game.playGame(userInterface);
-            } else if (workMode != 0 && workMode != 1) {
+            } else if (workMode == QUIT) {
+                return;
+            } else {
                 System.out.println("Упс, такого режима работы нет... Попробуйте еще раз.");
             }
-        } ;
+        }
     }
 }
