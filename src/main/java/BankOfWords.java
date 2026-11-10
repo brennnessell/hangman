@@ -6,7 +6,7 @@ import java.util.Random;
 import static java.nio.file.Files.readAllLines;
 
 public class BankOfWords {
-    private static final String WORDS_FILE_PATH = "bankOfWords.txt";
+    private static final String WORDS_FILE_PATH = "src/main/java/bankOfWords.txt";
 
     public static String getRandomWord() {
         Path bankOfWordsFilePath = Path.of(WORDS_FILE_PATH);
